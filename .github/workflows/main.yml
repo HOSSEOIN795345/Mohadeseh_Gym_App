@@ -2,29 +2,73 @@ name: Build APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
+
   build:
+
     runs-on: ubuntu-22.04
 
     steps:
 
-      - name: Checkout source
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Fix dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y libtinfo5 || true
 
-      - name: Build APK
-        uses: digreatbrian/buildozer-action@v2
-        with:
-          python-version: "3.10"
-          buildozer-cmd: android debug
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: APK
-          path: bin/*.apk
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: "17"
+
+
+    - name: Install system dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y \
+          python3-pip \
+          build-essential \
+          git \
+          zip \
+          unzip \
+          openjdk-17-jdk \
+          libffi-dev \
+          libssl-dev \
+          zlib1g-dev \
+          libncurses5-dev \
+          libncursesw5-dev
+
+
+    - name: Install Buildozer
+      run: |
+        pip install --upgrade pip
+        pip install cython==0.29.33
+        pip install buildozer
+
+
+    - name: Check files
+      run: |
+        ls
+        ls data
+        ls assets
+
+
+    - name: Build APK
+      run: |
+        buildozer -v android debug
+
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: Mohadeseh-Gym-APK
+        path: bin/*.apk
