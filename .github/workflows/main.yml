@@ -8,7 +8,6 @@ on:
 
 
 jobs:
-
   build:
 
     runs-on: ubuntu-22.04
@@ -32,9 +31,10 @@ jobs:
         java-version: "17"
 
 
-    - name: Install dependencies
+    - name: Install system packages
       run: |
         sudo apt update
+
         sudo apt install -y \
           git \
           zip \
@@ -56,29 +56,17 @@ jobs:
         pip install buildozer
 
 
-    - name: Accept Android licenses
-      run: |
-        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-
-
-    - name: Install Android packages
-      run: |
-        yes | sdkmanager \
-          "platform-tools" \
-          "platforms;android-35" \
-          "build-tools;35.0.0"
-
-
-    - name: Check project
+    - name: Check project files
       run: |
         ls
-        ls Mohadeseh_Gym_App
-        
+        cd Mohadeseh_Gym_App
+        ls
+
 
     - name: Build APK
       run: |
         cd Mohadeseh_Gym_App
-        buildozer -v android debug
+        yes | buildozer -v android debug
 
 
     - name: Upload APK
