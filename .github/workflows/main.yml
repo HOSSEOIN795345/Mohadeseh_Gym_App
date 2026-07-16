@@ -49,8 +49,8 @@ jobs:
       run: |
         ls
         ls Mohadeseh_Gym_App
-        ls assets
-        ls data
+        ls Mohadeseh_Gym_App/assets
+        ls Mohadeseh_Gym_App/data
 
 
     - name: Build APK
