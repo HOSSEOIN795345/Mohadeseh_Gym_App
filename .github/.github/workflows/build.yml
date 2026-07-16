@@ -5,23 +5,23 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
 
-    - name: Build APK
-      uses: digreatbrian/buildozer-action@v2
-      with:
-        buildozer_command: android debug
+      - name: Build APK with Buildozer
+        uses: digreatbrian/buildozer-action@v2
+        with:
+          python-version: "3.12"
+          buildozer-cmd: android debug
 
 
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: Mohadeseh-Gym-APK
-        path: bin/*.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mohadeseh-Gym-APK
+          path: bin/*.apk
