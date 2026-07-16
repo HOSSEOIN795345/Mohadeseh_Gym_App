@@ -45,15 +45,16 @@ jobs:
         pip install cython==0.29.33
 
 
-    - name: Check project
+    - name: Check project files
       run: |
         ls
         ls Mohadeseh_Gym_App
+        ls assets
+        ls data
 
 
     - name: Build APK
       run: |
-        cd Mohadeseh_Gym_App
         buildozer -v android debug
 
 
@@ -61,4 +62,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Mohadeseh-Gym-APK
-        path: Mohadeseh_Gym_App/bin/*.apk
+        path: bin/*.apk
