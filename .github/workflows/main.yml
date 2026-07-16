@@ -5,23 +5,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
 
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Fix dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y libtinfo5 || true
 
-      - name: Build APK with Buildozer
+      - name: Build APK
         uses: digreatbrian/buildozer-action@v2
         with:
-          python-version: "3.12"
+          python-version: "3.10"
           buildozer-cmd: android debug
-
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Mohadeseh-Gym-APK
+          name: APK
           path: bin/*.apk
