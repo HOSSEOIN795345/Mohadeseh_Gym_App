@@ -31,7 +31,7 @@ jobs:
         java-version: "17"
 
 
-    - name: Install system packages
+    - name: Install packages
       run: |
         sudo apt update
 
@@ -51,21 +51,18 @@ jobs:
 
     - name: Install Buildozer
       run: |
-        pip install --upgrade pip
+        python -m pip install --upgrade pip
         pip install cython==0.29.33
         pip install buildozer
 
 
-    - name: Check project files
+    - name: Check files
       run: |
-        ls
-        cd Mohadeseh_Gym_App
-        ls
+        ls -la
 
 
     - name: Build APK
       run: |
-        cd Mohadeseh_Gym_App
         yes | buildozer -v android debug
 
 
@@ -73,4 +70,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Mohadeseh-Gym-APK
-        path: Mohadeseh_Gym_App/bin/*.apk
+        path: bin/*.apk
