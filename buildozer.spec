@@ -19,7 +19,7 @@ source.include_exts = py,png,jpg,jpeg,kv,json,ttf,atlas
 version = 1.0
 
 # (list) Requirements
-requirements = python3,kivy
+requirements = python3,kivy,arabic-reshaper,python-bidi,pillow
 
 # (str) Orientation
 orientation = portrait
@@ -37,7 +37,7 @@ android.permissions = INTERNET
 
 
 # (list) Supported architectures
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a,armeabi-v7a
 
 
 # (bool) AndroidX
