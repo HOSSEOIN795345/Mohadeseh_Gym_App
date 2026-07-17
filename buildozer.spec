@@ -1,65 +1,80 @@
 [app]
 
-# نام برنامه
+# (str) Title of your application
 title = Mohadeseh Gym
 
-# نام پکیج (بدون فاصله)
+# (str) Package name
 package.name = mohadesehgym
 
-# دامنه سازنده
+# (str) Package domain
 package.domain = org.mohadeseh
 
-# مسیر اصلی پروژه (جایی که main.py هست)
-source.dir = .
+# (str) Source code directory
+source.dir = Mohadeseh_Gym_App
 
-# فایل‌های پایتون و منابع
-source.include_exts = py,png,jpg,jpeg,kv,atlas,json,ttf
+# (list) Source files to include
+source.include_exts = py,png,jpg,jpeg,kv,json,ttf,atlas
 
-# نسخه برنامه
+# (str) Application version
 version = 1.0
 
-# نیازمندی‌ها
-requirements = python3,kivy,arabic-reshaper,python-bidi
+# (list) Requirements
+requirements = python3,kivy
 
-# حالت صفحه
+# (str) Orientation
 orientation = portrait
 
-# پشتیبانی اندروید
+# (bool) Allow fullscreen
 fullscreen = 0
+
+
+# (list) Permissions
+android.permissions = INTERNET
+
+
+# (str) Icon
+# icon.filename = %(source.dir)s/icon.png
+
+
+# (list) Supported architectures
+android.archs = arm64-v8a, armeabi-v7a
+
+
+# (bool) AndroidX
+android.enable_androidx = True
+
+
+# (str) Android API
+android.api = 35
+
+# (str) Minimum API
+android.minapi = 24
+
+
+# (str) NDK version
+android.ndk = 27c
+
+
+# (bool) Copy libs
+android.copy_libs = 1
+
+
+# (str) Bootstrap
+p4a.bootstrap = sdl2
+
+
+# (bool) Warn about private storage
+android.private_storage = True
+
+
+# (str) Log level
+log_level = 2
 
 
 [buildozer]
 
-# سطح لاگ
+# (int) Log level
 log_level = 2
 
-# هشدارهای کمتر
+# (str) Warn if running as root
 warn_on_root = 1
-
-
-[android]
-
-# حداقل نسخه اندروید
-android.minapi = 23
-
-# نسخه API
-android.api = 35
-
-# معماری‌ها
-android.archs = arm64-v8a,armeabi-v7a
-
-# قبول لایسنس‌ها
-android.accept_sdk_license = True
-
-# NDK سازگار
-android.ndk = 25b
-
-
-# فعال کردن پشتیبانی پایتون
-p4a.branch = master
-
-
-[python-for-android]
-
-# استفاده از SDL2 برای Kivy
-android.bootstrap = sdl2
