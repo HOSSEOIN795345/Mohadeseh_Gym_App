@@ -1,47 +1,45 @@
 [app]
 
 # نام برنامه
-title = Mohadeseh Gym App
+title = Mohadeseh Gym
 
-# نام پکیج (بدون فاصله)
-package.name = mohadesehgym
+# نام پکیج
+package.name = mohadeshgym
 
 # دامنه پکیج
-package.domain = org.mohadeseh
-
-# نسخه برنامه
-version = 1.0
+package.domain = org.mohadesh
 
 # فایل اصلی برنامه
 source.main = main.py
 
-# پوشه پروژه
-source.dir = .
+# نسخه
+version = 1.0
 
-# فایل‌هایی که باید داخل APK باشند
-source.include_exts = py,png,jpg,jpeg,kv,json,ttf,txt
+# پسوند فایل‌هایی که باید داخل APK باشند
+source.include_exts = py,png,jpg,jpeg,kv,json,ttf
 
 # نیازمندی‌ها
-requirements = python3,kivy,arabic-reshaper,python-bidi
+requirements = python3,kivy
 
 # جهت صفحه
 orientation = portrait
 
-# اجازه دسترسی فایل‌ها
-android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
+# اجازه دسترسی اینترنت (در صورت نیاز)
+android.permissions = INTERNET
+
 
 # تنظیمات اندروید
 android.api = 35
 android.minapi = 23
 
 # معماری‌ها
-android.archs = arm64-v8a,armeabi-v7a
+android.archs = arm64-v8a, armeabi-v7a
 
-# نام خروجی
-android.entrypoint = org.kivy.android.PythonActivity
+# پشتیبانی fullscreen
+fullscreen = 0
 
 
 [buildozer]
 
-# لاگ ساخت
+# لاگ بیشتر برای پیدا کردن خطا
 log_level = 2
